@@ -1,16 +1,16 @@
-# This is a sample Python script.
+# This Python file uses the following encoding: utf-8
+import sys
+import os
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from PySide2.QtGui import QGuiApplication
+from PySide2.QtQml import QQmlApplicationEngine
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+if __name__ == "__main__":
+    app = QGuiApplication(sys.argv)
+    engine = QQmlApplicationEngine()
+    engine.load(os.path.join(os.path.dirname(__file__), "main.qml"))
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    if not engine.rootObjects():
+        sys.exit(-1)
+    sys.exit(app.exec_())
